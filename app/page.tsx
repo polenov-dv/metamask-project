@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import Web3 from "web3";
-import { makeStyles } from "@mui/styles";
 import {
   Button,
   Container,
@@ -13,23 +12,7 @@ import {
   Grid,
 } from "@mui/material";
 
-const useStyles = makeStyles(() => ({
-  content: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#d1d7ed",
-    height: "100vh",
-  },
-  container: {
-    padding: "40px",
-    backgroundColor: "#fff",
-    borderRadius: "20px",
-  },
-}));
-
 export default function Home() {
-  const cls = useStyles();
   const [web3, setWeb3] = useState<Web3 | null>(null);
   const [account, setAccount] = useState<string>("");
   const [ethBalance, setEthBalance] = useState<string>("");
@@ -114,8 +97,18 @@ export default function Home() {
   };
 
   return (
-    <main className={cls.content}>
-      <Container className={cls.container} maxWidth="md">
+    <Container
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <Container
+        maxWidth="md"
+        sx={{ padding: "40px", backgroundColor: "#fff", borderRadius: "20px" }}
+      >
         <Typography variant="h2" align="center">
           Wallet
         </Typography>
@@ -204,6 +197,6 @@ export default function Home() {
           Send Transaction
         </Button>
       </Container>
-    </main>
+    </Container>
   );
 }
